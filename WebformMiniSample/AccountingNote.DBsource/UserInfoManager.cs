@@ -90,13 +90,6 @@ namespace AccountingNote.DBsource
             }
         }
 
-
-
-
-
-
-
-
         public static void InsertIntoData(string account, string PWD, string name, string Email)
         {
             string connectionString = DBHelper.GetConnectionString();
@@ -142,5 +135,45 @@ namespace AccountingNote.DBsource
 
 
         }
+
+
+        public static DataTable GetUserInfoListtol(string account)
+        {
+            string connectionString = DBHelper.GetConnectionString();
+            string dbCommandString =
+                @"SELECT [ID],[Account],[PWD],[Name],[Email] 
+                    FROM UserInfo                        
+                  ";
+            //where [Account] = @account 
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                using (SqlCommand command = new SqlCommand(dbCommandString, connection))
+                {
+                   // command.Parameters.AddWithValue("@account", account);
+
+                    try
+                    {
+                        connection.Open();
+                        SqlDataReader reader = command.ExecuteReader();
+
+                        DataTable dt = new DataTable();
+                        dt.Load(reader);
+                        //reader.Close();
+                        return dt;
+
+                    }
+                    catch (Exception ex)
+                    {
+                        logger.WriteLog(ex);
+                        //Console.WriteLine(ex.ToString());
+                        return null;
+                    }
+                }
+            }
+        }
+
+
+
     }
 }

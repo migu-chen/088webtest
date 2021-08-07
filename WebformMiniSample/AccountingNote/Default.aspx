@@ -34,7 +34,7 @@
        <asp:Label ID="Label4" runat="server" Text="系統共有幾位使用者"></asp:Label>
 
 
-        <asp:GridView ID="gvAccountList" runat="server" AutoGenerateColumns ="false" >
+        <asp:GridView ID="gvAccountList" runat="server" AutoGenerateColumns ="false" Width="615px" >
                <Columns >
                    <asp:BoundField  HeaderText = "標題" DataField ="Caption" />
                    <asp:BoundField  HeaderText = "金額" DataField ="Amount"/>  
@@ -51,14 +51,6 @@
                           
                         </ItemTemplate>
                     </asp:TemplateField>     
-               </Columns>
-            </asp:GridView>
-
-           <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns ="false" >
-               <Columns >
-                   <asp:BoundField  HeaderText = "ID" DataField ="Caption" />
-                   <asp:BoundField  HeaderText = "Account" DataField ="Amount"/>  
-                                         
                </Columns>
             </asp:GridView>
 

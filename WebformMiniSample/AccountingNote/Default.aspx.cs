@@ -35,15 +35,14 @@ namespace AccountingNote
             vn = vn - 1;
             this.txrBox2.Text = dt.Rows[vn]["CreateDate"].ToString();
 
-            //GettestcounttingList
-            //var dt1 = UserInfoManager.GetUserInfoListtest(account);
-            var dt1 = UserInfoManager.aGetUserInfoListtest(account);
-            var dt2 = AccountingManager.GetAccounttingList(dr1["ID"].ToString());
-            DataTable table = dt1;
-            int vn1 = table.Rows.Count;
-                     
-            this.txrBox4.Text = vn1.ToString();
             
+
+
+            var dt3  = UserInfoManager.GetUserInfoListtol(account);
+            int vn3 = dt3.Rows.Count;
+            this.txrBox4.Text = vn3.ToString();
+                                      
+
         }
 
         protected void Button1_Click(object sender, EventArgs e)
