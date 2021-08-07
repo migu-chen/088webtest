@@ -11,7 +11,7 @@ namespace AccountingNote
 {
 
 
-    public partial class Default
+    public partial class AddUser
     {
 
         /// <summary>
@@ -24,103 +24,94 @@ namespace AccountingNote
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
-        /// Label1 控制項。
+        /// aid 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label1;
+        protected global::System.Web.UI.WebControls.Label aid;
 
         /// <summary>
-        /// txrBox1 控制項。
+        /// tid 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txrBox1;
+        protected global::System.Web.UI.WebControls.TextBox tid;
 
         /// <summary>
-        /// Label2 控制項。
+        /// aaccount 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label2;
+        protected global::System.Web.UI.WebControls.Label aaccount;
 
         /// <summary>
-        /// txrBox2 控制項。
+        /// taccount 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txrBox2;
+        protected global::System.Web.UI.WebControls.TextBox taccount;
 
         /// <summary>
-        /// Label3 控制項。
+        /// aPWD 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label3;
+        protected global::System.Web.UI.WebControls.Label aPWD;
 
         /// <summary>
-        /// txrBox3 控制項。
+        /// tPWD 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txrBox3;
+        protected global::System.Web.UI.WebControls.TextBox tPWD;
 
         /// <summary>
-        /// txrBox4 控制項。
+        /// laname 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txrBox4;
+        protected global::System.Web.UI.WebControls.Label laname;
 
         /// <summary>
-        /// Label4 控制項。
+        /// tname 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label4;
+        protected global::System.Web.UI.WebControls.TextBox tname;
 
         /// <summary>
-        /// gvAccountList 控制項。
+        /// aEmail 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvAccountList;
+        protected global::System.Web.UI.WebControls.Label aEmail;
 
         /// <summary>
-        /// GridView1 控制項。
+        /// tEmail 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridView1;
-
-        /// <summary>
-        /// Adduser 控制項。
-        /// </summary>
-        /// <remarks>
-        /// 自動產生的欄位。
-        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Adduser;
+        protected global::System.Web.UI.WebControls.TextBox tEmail;
 
         /// <summary>
         /// Button1 控制項。

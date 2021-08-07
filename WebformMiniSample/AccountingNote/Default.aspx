@@ -54,6 +54,16 @@
                </Columns>
             </asp:GridView>
 
+           <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns ="false" >
+               <Columns >
+                   <asp:BoundField  HeaderText = "ID" DataField ="Caption" />
+                   <asp:BoundField  HeaderText = "Account" DataField ="Amount"/>  
+                                         
+               </Columns>
+            </asp:GridView>
+
+        <asp:Button ID="Adduser" runat="server" Text="Adduser"  OnClick="Adduser_Click"   />
+        
         <asp:Button ID="Button1" runat="server" Text="登入" OnClick="Button1_Click" />
     </form>
 </body>

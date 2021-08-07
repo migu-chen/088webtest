@@ -48,7 +48,12 @@ namespace AccountingNote
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-         Response.Redirect("/SystemAdmin/UserInfo.aspx");
+           Response.Redirect("/SystemAdmin/UserInfo.aspx");
+        }
+
+        protected void Adduser_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("/SystemAdmin/AddUser.aspx");
         }
     }
 }

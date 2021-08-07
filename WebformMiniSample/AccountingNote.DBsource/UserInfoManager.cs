@@ -91,5 +91,54 @@ namespace AccountingNote.DBsource
         }
 
 
+
+
+
+
+
+
+        public static void InsertIntoData( string account, string PWD, string name, string Email)
+        {
+            string connectionString = DBHelper.GetConnectionString();
+
+            string dbCommandString =
+                @"INSERT INTO UserInfo
+                        ( ID, Account, PWD, Name, Email)
+                  VALUES
+                        (@ID, @account,@PWD,@name,@Email)  
+                 ";
+
+            //@"DELETE TestTable WHERE ID = @id";
+
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                using (SqlCommand comm = new SqlCommand(dbCommandString, conn))
+                {
+                    var idd = "F048585A-6A4A-4828-B7A6-5719A7DF5E36";
+                    comm.Parameters.AddWithValue("@ID", idd);
+                    comm.Parameters.AddWithValue("@account", account);
+                    comm.Parameters.AddWithValue("@PWD", PWD);
+                    comm.Parameters.AddWithValue("@name", name);
+                    comm.Parameters.AddWithValue("@Email", Email);
+
+
+                    // comm.Parameters.AddWithValue("@numberCol", 240);
+
+                    try
+                    {
+                        conn.Open();
+                        int effectRows = comm.ExecuteNonQuery();
+                        // Console.WriteLine($" {effectRows } has changed. ");
+                    }
+
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.ToString());
+                    }
+                }
+            }
+
+
+        }
     }
 }
