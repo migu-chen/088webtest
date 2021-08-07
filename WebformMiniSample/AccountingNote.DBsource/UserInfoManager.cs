@@ -97,13 +97,13 @@ namespace AccountingNote.DBsource
 
 
 
-        public static void InsertIntoData( string account, string PWD, string name, string Email)
+        public static void InsertIntoData(string account, string PWD, string name, string Email)
         {
             string connectionString = DBHelper.GetConnectionString();
 
             string dbCommandString =
                 @"INSERT INTO UserInfo
-                        ( ID, Account, PWD, Name, Email)
+                        (ID, Account, PWD, Name, Email)
                   VALUES
                         (@ID, @account,@PWD,@name,@Email)  
                  ";
@@ -114,7 +114,9 @@ namespace AccountingNote.DBsource
             {
                 using (SqlCommand comm = new SqlCommand(dbCommandString, conn))
                 {
-                    var idd = "F048585A-6A4A-4828-B7A6-5719A7DF5E36";
+                    Guid g = Guid.NewGuid();
+                  
+                    var idd = g.ToString();
                     comm.Parameters.AddWithValue("@ID", idd);
                     comm.Parameters.AddWithValue("@account", account);
                     comm.Parameters.AddWithValue("@PWD", PWD);
@@ -128,7 +130,7 @@ namespace AccountingNote.DBsource
                     {
                         conn.Open();
                         int effectRows = comm.ExecuteNonQuery();
-                        // Console.WriteLine($" {effectRows } has changed. ");
+                        //return effectRows.ToString();// Console.WriteLine($" {effectRows } has changed. ");
                     }
 
                     catch (Exception ex)

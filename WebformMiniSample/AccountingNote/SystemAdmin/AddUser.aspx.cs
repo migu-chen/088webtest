@@ -29,9 +29,15 @@ namespace AccountingNote
             this.laname.Text = name ;
             this.aEmail.Text = Email ;
 
-            //UserInfoManager.InsertIntoData( account, PWD, name, Email);
+            UserInfoManager.InsertIntoData(account, PWD, name, Email);
+            //Guid g = Guid.NewGuid();
 
-            
+            //this.aid.Text = g.ToString();
+           
+            //;
+            //Console.WriteLine(g);
+            //Console.WriteLine(Guid.NewGuid());
+
         }
     }
 }
