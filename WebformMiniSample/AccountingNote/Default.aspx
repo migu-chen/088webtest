@@ -15,24 +15,19 @@
         <asp:Label ID="Label1" runat="server" Text="何時有第一筆記錄"></asp:Label>
         <asp:TextBox ID="txrBox1" runat="server" Width="56px"></asp:TextBox>
 
-
        <br />
         <asp:Label ID="Label2" runat="server" Text="最新一筆為何時"> </asp:Label>
         <asp:TextBox ID="txrBox2" runat="server" Width="56px"></asp:TextBox>
-
 
           <br />
         <asp:Label ID="Label3" runat="server" Text="系統共紀錄了 n 筆流水帳"> </asp:Label>
         <asp:TextBox ID="txrBox3" runat="server" Width="56px"></asp:TextBox>
 
-
         <br />
         <asp:TextBox ID="txrBox4" runat="server" Width="124px" Height="16px"></asp:TextBox>
 
-
         <br />
        <asp:Label ID="Label4" runat="server" Text="系統共有幾位使用者"></asp:Label>
-
 
         <asp:GridView ID="gvAccountList" runat="server" AutoGenerateColumns ="false" Width="615px" >
                <Columns >
