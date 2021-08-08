@@ -22,73 +22,56 @@ namespace AccountingNote.DBsource
                     where [Account] = @account    
                   ";
 
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            List<SqlParameter> list = new List<SqlParameter>();
+            list.Add(new SqlParameter("@account", account));
+            try
             {
-                using (SqlCommand command = new SqlCommand(dbCommandString, connection))
-                {
-                    command.Parameters.AddWithValue("@account",account);
-
-                    try
-                    {
-                        connection.Open();
-                        SqlDataReader reader = command.ExecuteReader();
-
-                        DataTable dt = new DataTable();
-                        dt.Load(reader);
-                        reader.Close();
-
-                        if (dt.Rows.Count == 0)
-                            return null;
-
-                        DataRow dr = dt.Rows[0];
-                        return dr;
-
-                    }
-                    catch (Exception ex)
-                    {
-                        logger.WriteLog(ex);
-                        //Console.WriteLine(ex.ToString());
-                        return null;
-                    }
-                }
+                return DBHelper.Userlist(account, connectionString, dbCommandString);
+        
             }
+            catch (Exception ex)
+            {
+                logger.WriteLog(ex);
+                //Console.WriteLine(ex.ToString());
+                return null;
+            }
+        
         }
 
-        public static DataTable aGetUserInfoListtest(string account)
-        {
-            string connectionString = DBHelper.GetConnectionString();
-            string dbCommandString =
-                @"SELECT [ID],[Account],[PWD],[Name],[Email] 
-                    FROM UserInfo 
-                    where [Account] = @account    
-                  ";
+        //public static DataTable aGetUserInfoListToal(string account)
+        //{
+        //    string connectionString = DBHelper.GetConnectionString();
+        //    string dbCommandString =
+        //        @"SELECT [ID],[Account],[PWD],[Name],[Email] 
+        //            FROM UserInfo                     
+        //          ";
+        //    //where [Account] = @account   
+        //    using (SqlConnection connection = new SqlConnection(connectionString))
+        //    {
+        //        using (SqlCommand command = new SqlCommand(dbCommandString, connection))
+        //        {
+        //            command.Parameters.AddWithValue("@account", account);
 
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                using (SqlCommand command = new SqlCommand(dbCommandString, connection))
-                {
-                    command.Parameters.AddWithValue("@account", account);
+        //            try
+        //            {
+        //                connection.Open();
+        //                SqlDataReader reader = command.ExecuteReader();
 
-                    try
-                    {
-                        connection.Open();
-                        SqlDataReader reader = command.ExecuteReader();
-
-                        DataTable dt = new DataTable();
-                        dt.Load(reader);
-                        //reader.Close();
-                        return dt;
+        //                DataTable dt = new DataTable();
+        //                dt.Load(reader);
+        //                //reader.Close();
+        //                return dt;
                         
-                    }
-                    catch (Exception ex)
-                    {
-                        logger.WriteLog(ex);
-                        //Console.WriteLine(ex.ToString());
-                        return null;
-                    }
-                }
-            }
-        }
+        //            }
+        //            catch (Exception ex)
+        //            {
+        //                logger.WriteLog(ex);
+        //                //Console.WriteLine(ex.ToString());
+        //                return null;
+        //            }
+        //        }
+        //    }
+        //}
 
         public static void InsertIntoData(string account, string PWD, string name, string Email)
         {
@@ -101,39 +84,21 @@ namespace AccountingNote.DBsource
                         (@ID, @account,@PWD,@name,@Email)  
                  ";
 
-            //@"DELETE TestTable WHERE ID = @id";
+            List<SqlParameter> list = new List<SqlParameter>();
+        //    list.Add(new SqlParameter("@ID", idd));
+            list.Add(new SqlParameter("@account", account));
+            list.Add(new SqlParameter("@PWD", PWD));
+            list.Add(new SqlParameter("@name", name));
+            list.Add(new SqlParameter("@Email", Email));
 
-            using (SqlConnection conn = new SqlConnection(connectionString))
+            try
             {
-                using (SqlCommand comm = new SqlCommand(dbCommandString, conn))
-                {
-                    Guid g = Guid.NewGuid();
-                  
-                    var idd = g.ToString();
-                    comm.Parameters.AddWithValue("@ID", idd);
-                    comm.Parameters.AddWithValue("@account", account);
-                    comm.Parameters.AddWithValue("@PWD", PWD);
-                    comm.Parameters.AddWithValue("@name", name);
-                    comm.Parameters.AddWithValue("@Email", Email);
-
-
-                    // comm.Parameters.AddWithValue("@numberCol", 240);
-
-                    try
-                    {
-                        conn.Open();
-                        int effectRows = comm.ExecuteNonQuery();
-                        //return effectRows.ToString();// Console.WriteLine($" {effectRows } has changed. ");
-                    }
-
-                    catch (Exception ex)
-                    {
-                        Console.WriteLine(ex.ToString());
-                    }
-                }
+                DBHelper.Nadduser(account, PWD, name, Email, connectionString, dbCommandString);
             }
-
-
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
         }
 
 
@@ -150,7 +115,7 @@ namespace AccountingNote.DBsource
             {
                 using (SqlCommand command = new SqlCommand(dbCommandString, connection))
                 {
-                   // command.Parameters.AddWithValue("@account", account);
+                    // command.Parameters.AddWithValue("@account", account);
 
                     try
                     {
