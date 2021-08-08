@@ -14,13 +14,21 @@ namespace AccountingNote
         protected void Page_Load(object sender, EventArgs e )
         {
             // string account = this.Session["UserLoginInfo"] as string;
-            string account = "Admin";
-            var dr1 = DBsource.UserInfoManager.GetUserInfoListtest(account);
-            var dt = AccountingManager.GetAccounttingList(dr1["ID"].ToString());
+            string account = "Admin";//假設有帳戶
+            //var dr1 = DBsource.UserInfoManager.GetUserInfoListtest(account);
+            var dr1 = UserInfoManager.GetUserInfoListtest(account);
 
+           // var dt = AccountingManager.GetAccounttingList(dr1["ID"].ToString());
+            var dt = AccountingManager.GetAccounttingList(dr1["ID"].ToString());
             if (dt.Rows.Count > 0)
             {
-                this.gvAccountList.DataSource = dt;
+
+                DataView view = new DataView(dt);
+
+                // Sort by State and ZipCode column in descending order
+                view.Sort = "CreateDate  DESC";
+
+                this.gvAccountList.DataSource = view;
                 this.gvAccountList.DataBind();
             }
             else
@@ -53,6 +61,11 @@ namespace AccountingNote
         protected void Adduser_Click(object sender, EventArgs e)
         {
             Response.Redirect("/SystemAdmin/AddUser.aspx");
+        }
+
+        protected void Back_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("/Default.aspx");
         }
     }
 }

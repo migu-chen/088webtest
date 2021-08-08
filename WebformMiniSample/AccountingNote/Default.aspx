@@ -49,7 +49,8 @@
                </Columns>
             </asp:GridView>
 
-        <asp:Button ID="Adduser" runat="server" Text="Adduser"  OnClick="Adduser_Click"   />
+       <%-- <asp:Button ID="Adduser" runat="server" Text="Adduser"  OnClick="Adduser_Click"   />--%>
+        <asp:Button ID="back" runat="server" Text="Button" OnClick ="Back_Click"  />
         
         <asp:Button ID="Button1" runat="server" Text="登入" OnClick="Button1_Click" />
     </form>

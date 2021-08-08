@@ -7,6 +7,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using UserInfoManager = AccountingNote.DBsource.UserInfoManager;
 
 namespace AccountingNote.SystemAdmin
 {
@@ -26,7 +27,7 @@ namespace AccountingNote.SystemAdmin
 
                 string account = this.Session["UserLoginInfo"] as string;
                 //DataRow dr = UserInfoManager.GetUserInfoByAccount( account );
-                DataRow dr = DBsource.UserInfoManager.GetUserInfoListtest(account);
+                DataRow dr = UserInfoManager.GetUserInfoListtest(account);
                 DataRow dr1 = dr;
 
 
