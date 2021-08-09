@@ -1,11 +1,8 @@
-﻿using AccountingNote.DBsource;
-using DBClasses;
+﻿using AccountingNote.auth;
+using AccountingNote.DBsource;
 using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -15,9 +12,11 @@ namespace AccountingNote.SystemAdmin
     {
         protected void Page_Load(object sender, EventArgs e)
         {  // check is logined
-            if (this.Session["UserLoginInfo"] == null)
+           // if (this.Session["UserLoginInfo"] == null)
+           if(!Authmanager.IsLogined())
             {
                 Response.Redirect("/login.aspx");
+                return;
             }
             string account = this.Session["UserLoginInfo"] as string;
             var dr1 = DBsource.UserInfoManager.GetUserInfoListtest(account);

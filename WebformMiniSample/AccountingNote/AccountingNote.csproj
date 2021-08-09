@@ -73,7 +73,9 @@
     <Content Include="SystemAdmin\AccountingDetail.aspx" />
     <Content Include="SystemAdmin\AccountingList.aspx" />
     <Content Include="SystemAdmin\UserInfo.aspx" />
+    <Content Include="SystemAdmin\Userlist.aspx" />
     <Content Include="Web.config" />
+    <Content Include="WebForm1.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="About.aspx.cs">
@@ -82,6 +84,13 @@
     </Compile>
     <Compile Include="About.aspx.designer.cs">
       <DependentUpon>About.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Main.Master.cs">
+      <DependentUpon>Main.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Main.Master.designer.cs">
+      <DependentUpon>Main.Master</DependentUpon>
     </Compile>
     <Compile Include="SystemAdmin\AddUser.aspx.cs">
       <DependentUpon>AddUser.aspx</DependentUpon>
@@ -129,9 +138,32 @@
     <Compile Include="SystemAdmin\UserInfo.aspx.designer.cs">
       <DependentUpon>UserInfo.aspx</DependentUpon>
     </Compile>
+    <Compile Include="SystemAdmin\Admin.Master.cs">
+      <DependentUpon>Admin.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemAdmin\Admin.Master.designer.cs">
+      <DependentUpon>Admin.Master</DependentUpon>
+    </Compile>
+    <Compile Include="SystemAdmin\Userlist.aspx.cs">
+      <DependentUpon>Userlist.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemAdmin\Userlist.aspx.designer.cs">
+      <DependentUpon>Userlist.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForm1.aspx.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForm1.aspx.designer.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Main.Master" />
     <None Include="packages.config" />
+    <Content Include="SystemAdmin\Admin.Master" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -144,17 +176,13 @@
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\AccountingNote.auth\AccountingNote.auth.csproj">
+      <Project>{eb8c3e70-2172-4f1e-8dbc-56aab4d85e61}</Project>
+      <Name>AccountingNote.auth</Name>
+    </ProjectReference>
     <ProjectReference Include="..\AccountingNote.DBsource\AccountingNote.DBsource.csproj">
       <Project>{9F105A99-8336-476F-8281-7A2F737DD749}</Project>
       <Name>AccountingNote.DBsource</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\DBClasses\DBClasses.csproj">
-      <Project>{62841fd7-f0f4-4e2b-b814-bdf21506174c}</Project>
-      <Name>DBClasses</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\WebApYYY\WebApYYY.csproj">
-      <Project>{e2fc0d19-055c-44b7-9068-a29d39368403}</Project>
-      <Name>WebApYYY</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

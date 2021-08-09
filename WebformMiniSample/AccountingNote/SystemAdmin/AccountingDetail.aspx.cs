@@ -1,4 +1,5 @@
-﻿using AccountingNote.DBsource;
+﻿using AccountingNote.auth;
+using AccountingNote.DBsource;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,8 +14,8 @@ namespace AccountingNote.SystemAdmin
         protected void Page_Load(object sender, EventArgs e)
         {
             // check is logined
-          if (this.Session["UserLoginInfo"] == null)
-          {
+            if (!Authmanager.IsLogined())
+            {
                 Response.Redirect("/login.aspx");
           }
             

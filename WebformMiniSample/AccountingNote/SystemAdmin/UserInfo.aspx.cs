@@ -1,12 +1,6 @@
-﻿using AccountingNote.DBsource;
-using DBClasses;
+﻿using AccountingNote.auth;
 using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 using UserInfoManager = AccountingNote.DBsource.UserInfoManager;
 
 namespace AccountingNote.SystemAdmin
@@ -18,8 +12,7 @@ namespace AccountingNote.SystemAdmin
             if (!this.IsPostBack)
             {
 
-
-                if (this.Session["UserLoginInfo"] == null)
+                if (!Authmanager.IsLogined())
                 {
                     Response.Redirect("/Login.aspx");
                     return;
