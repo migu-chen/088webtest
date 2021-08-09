@@ -18,16 +18,16 @@ namespace AccountingNote.SystemAdmin
                 Response.Redirect("/login.aspx");
                 return;
             }
-            string account = this.Session["UserLoginInfo"] as string;
-            var dr1 = DBsource.UserInfoManager.GetUserInfoListtest(account);
-
-            if (dr1 == null)
+            //string account = this.Session["UserLoginInfo"] as string;
+            var currentUser = Authmanager.GetCurrentUser();
+                
+            if (currentUser == null)
             {
                 Response.Redirect("/login.aspx");
                 return;
             }
 
-            var dt = AccountingManager.GetAccounttingList(dr1["ID"].ToString());
+            var dt = AccountingManager.GetAccounttingList(currentUser.ID);
 
             if(dt.Rows .Count > 0)
             {
