@@ -1,4 +1,4 @@
-﻿using AccountingNote.auth;
+﻿using AccountingNote.Auth;
 using System;
 using System.Data;
 using UserInfoManager = AccountingNote.DBsource.UserInfoManager;

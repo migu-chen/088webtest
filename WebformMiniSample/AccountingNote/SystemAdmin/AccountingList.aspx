@@ -1,6 +1,9 @@
 ﻿
 <%@ Page Language="C#" AutoEventWireup="true" CodeBehind="AccountingList.aspx.cs" Inherits="AccountingNote.SystemAdmin.AccountingList1" %>
 
+<%@ Register Src="~/UserControls/ucPager.ascx" TagPrefix="uc1" TagName="ucPager" %>
+
+
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -23,7 +26,7 @@
            <td>
                <!--這裡放主要內容-->
            <asp:Button ID="btnCreate" runat="server" Text="Add Accounting" OnClick = "btnCreate_Click" />
-           <asp:GridView ID="gvAccountList" runat="server" AutoGenerateColumns ="False" OnRowDataBound ="gvAccountingList_RowDataBound"  >
+           <asp:GridView ID="gvAccountList" runat="server" AutoGenerateColumns ="False" OnRowDataBound ="gvAccountingList_RowDataBound" Height="142px"  >
               
                <Columns >
                    <asp:BoundField  HeaderText = "標題" DataField ="Caption" />
@@ -31,7 +34,7 @@
                    <asp:TemplateField  HeaderText = "In/Out" > 
                        <ItemTemplate>
                          <%--  <%# ((int)Eval("actType") == 0) ? "支出":"收入" %>--%>
-                           <asp:Literal ID="ItActType" runat="server"></asp:Literal>
+                          <%-- <asp:Literal ID="It4ActType" runat="server"></asp:Literal>--%>
                            <asp:Label ID="Ib4ActType" runat="server" ></asp:Label>
                        </ItemTemplate>
                     </asp:TemplateField>
@@ -54,8 +57,13 @@
                <SortedDescendingCellStyle BackColor="#FCF6C0" />
                <SortedDescendingHeaderStyle BackColor="#820000" />
             </asp:GridView>
-               
+               <asp:Literal ID="ItPager" runat="server"></asp:Literal>
+
+               <uc1:ucPager runat="server" ID="ucPager" PageSize="10"
+                   CurrentPage="1"  TotalSize="10" Url="accounyingList.aspx"/>
+
            <asp:PlaceHolder ID="plcNodata" runat="server" Visible ="false" >
+
              <p>
                    No data in your Accounting Note. 
              </p>

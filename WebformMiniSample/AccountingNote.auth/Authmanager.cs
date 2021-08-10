@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using System.Web;
 
 
-namespace AccountingNote.auth
+namespace AccountingNote.Auth
 {
     public class Authmanager
     {

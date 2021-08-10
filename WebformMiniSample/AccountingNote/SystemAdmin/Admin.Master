@@ -1,11 +1,11 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Admin.Master.cs" Inherits="AccountingNote.SystemAdmin.userlist" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Admin.Master.cs" Inherits="AccountingNote.SystemAdmin.Admin" %>
 
 <!DOCTYPE html>
 
 <html>
 <head runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title></title>
+    <title>流水帳管理系統<a href="a">First</a> &nbsp;</title>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>

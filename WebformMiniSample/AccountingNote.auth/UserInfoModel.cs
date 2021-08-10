@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AccountingNote.auth
+namespace AccountingNote.Auth
 {
     public class UserInfoModel
     {

@@ -1,4 +1,4 @@
-﻿using AccountingNote.auth;
+﻿using AccountingNote.Auth;
 using AccountingNote.DBsource;
 using System;
 using System.Data;
@@ -10,17 +10,18 @@ namespace AccountingNote.SystemAdmin
 {
     public partial class AccountingList1 : System.Web.UI.Page
     {
+
         protected void Page_Load(object sender, EventArgs e)
         {  // check is logined
            // if (this.Session["UserLoginInfo"] == null)
-           if(!Authmanager.IsLogined())
+            if (!Authmanager.IsLogined())
             {
                 Response.Redirect("/login.aspx");
                 return;
             }
             //string account = this.Session["UserLoginInfo"] as string;
             var currentUser = Authmanager.GetCurrentUser();
-                
+
             if (currentUser == null)
             {
                 Response.Redirect("/login.aspx");
@@ -29,21 +30,76 @@ namespace AccountingNote.SystemAdmin
 
             var dt = AccountingManager.GetAccounttingList(currentUser.ID);
 
-            if(dt.Rows .Count > 0)
+            if (dt.Rows.Count > 0)
             {
-             this.gvAccountList.DataSource = dt;
-             this.gvAccountList.DataBind();
+                //int totalPages = this.GetTotalPages(dt);
+                var dtPaged = this.GetPagedDataTable(dt);
+
+                this.gvAccountList.DataSource = dtPaged;
+                this.gvAccountList.DataBind();
+
+                this.ucPager.TotalSize = dt.Rows.Count;//給出總數
+                this.ucPager.Bind();
+                
             }
             else
             {
                 this.gvAccountList.Visible = false;
                 this.plcNodata.Visible = true;
             }
+         
         }
-        public override void VerifyRenderingInServerForm(Control control)
+
+
+
+
+        private int GetCurrentPage()
         {
-            //處理'GridView' 的控制項 'GridView' 必須置於有 runat=server 的表單標記之中
+            string pageText = Request.QueryString["Page"];
+
+            if (string.IsNullOrWhiteSpace(pageText))
+                return 1;
+
+            int intPage;
+            if (!int.TryParse(pageText, out intPage))
+                return 1;
+
+            if (intPage <= 0)
+                return 1;
+
+            return intPage;
         }
+
+
+        private DataTable GetPagedDataTable(DataTable dt)
+        {
+            DataTable dtPaged = dt.Clone();
+            //foreach (DataRow dr in dt.Rows )
+            //for(var i=0;i < dt.Rows.Count; i++ )
+
+            int startIndex = (this.GetCurrentPage() - 1) * 10;
+            int endIndex = (this.GetCurrentPage()) * 10;
+            if (endIndex > dt.Rows.Count)
+                endIndex = dt.Rows.Count;
+            for (var i = startIndex; i < endIndex; i++)
+            {
+                DataRow dr = dt.Rows[i];
+                var drNew = dtPaged.NewRow();
+
+                foreach(DataColumn dc in dt.Columns)
+                {
+                     drNew[dc.ColumnName] = dr[dc];
+                }
+                dtPaged.Rows.Add(drNew);
+            }
+            
+            return dtPaged;
+        }
+
+        //public override void VerifyRenderingInServerForm(Control control)
+        //{
+        //    //處理'GridView' 的控制項 'GridView' 必須置於有 runat=server 的表單標記之中
+        //}
 
         protected void btnCreate_Click(object sender, EventArgs e)
         {
@@ -60,24 +116,24 @@ namespace AccountingNote.SystemAdmin
             
               //e.Row.DataItem as DataControlRowState;
               // Literal lt4 = row.FindControl("ItActType") as Literal;
-               Label lb4 = row.FindControl("Ib4ActType") as Label;
+               Label lbI = row.FindControl("Ib4ActType") as Label;
                 var dr = row.DataItem as DataRowView;
                int actType = dr.Row.Field<int>("ActType");
 
                if (actType == 0)
                 {
                     //lt4.Text = "支出" ;
-                    lb4.Text = "支出";
+                    lbI.Text = "支出";
                 }
                 else
                 {
-                     //lt4.Text = "收入";
-                     lb4.Text = "收入";
+                    //lt4.Text = "收入";
+                    lbI.Text = "收入";
                 }
                 
                if (dr.Row.Field <int>("Amount") > 1500)
                 {
-                    lb4.ForeColor = Color.Red;
+                    lbI.ForeColor = Color.Red;
                 }
             }
         }

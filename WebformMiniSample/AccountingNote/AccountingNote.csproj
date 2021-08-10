@@ -74,6 +74,7 @@
     <Content Include="SystemAdmin\AccountingList.aspx" />
     <Content Include="SystemAdmin\UserInfo.aspx" />
     <Content Include="SystemAdmin\Userlist.aspx" />
+    <Content Include="UserControls\ucPager.ascx" />
     <Content Include="Web.config" />
     <Content Include="WebForm1.aspx" />
   </ItemGroup>
@@ -152,6 +153,13 @@
     <Compile Include="SystemAdmin\Userlist.aspx.designer.cs">
       <DependentUpon>Userlist.aspx</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\ucPager.ascx.cs">
+      <DependentUpon>ucPager.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserControls\ucPager.ascx.designer.cs">
+      <DependentUpon>ucPager.ascx</DependentUpon>
+    </Compile>
     <Compile Include="WebForm1.aspx.cs">
       <DependentUpon>WebForm1.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -176,9 +184,9 @@
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\AccountingNote.auth\AccountingNote.auth.csproj">
+    <ProjectReference Include="..\AccountingNote.auth\AccountingNote.Auth.csproj">
       <Project>{eb8c3e70-2172-4f1e-8dbc-56aab4d85e61}</Project>
-      <Name>AccountingNote.auth</Name>
+      <Name>AccountingNote.Auth</Name>
     </ProjectReference>
     <ProjectReference Include="..\AccountingNote.DBsource\AccountingNote.DBsource.csproj">
       <Project>{9F105A99-8336-476F-8281-7A2F737DD749}</Project>

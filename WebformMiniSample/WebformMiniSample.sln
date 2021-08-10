@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApYYY", "WebApYYY\WebApY
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DBClasses", "DBClasses\DBClasses.csproj", "{62841FD7-F0F4-4E2B-B814-BDF21506174C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AccountingNote.auth", "AccountingNote.auth\AccountingNote.auth.csproj", "{EB8C3E70-2172-4F1E-8DBC-56AAB4D85E61}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AccountingNote.Auth", "AccountingNote.auth\AccountingNote.Auth.csproj", "{EB8C3E70-2172-4F1E-8DBC-56AAB4D85E61}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

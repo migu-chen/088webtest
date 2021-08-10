@@ -11,7 +11,7 @@ namespace AccountingNote.SystemAdmin
 {
 
 
-    public partial class userlist
+    public partial class Admin
     {
 
         /// <summary>
