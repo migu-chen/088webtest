@@ -2,6 +2,8 @@
 <%@ Page Language="C#" AutoEventWireup="true" CodeBehind="AccountingList.aspx.cs" Inherits="AccountingNote.SystemAdmin.AccountingList1" %>
 
 <%@ Register Src="~/UserControls/ucPager.ascx" TagPrefix="uc1" TagName="ucPager" %>
+<%@ Register Src="~/UserControls/ucPage2.ascx" TagPrefix="uc1" TagName="ucPage2" %>
+
 
 
 <!DOCTYPE html>
@@ -58,9 +60,11 @@
                <SortedDescendingHeaderStyle BackColor="#820000" />
             </asp:GridView>
                <asp:Literal ID="ItPager" runat="server"></asp:Literal>
-
-               <uc1:ucPager runat="server" ID="ucPager" PageSize="10"
-                   CurrentPage="1"  TotalSize="10" Url="accounyingList.aspx"/>
+               <div style ="background-color:burlywood ">
+               <uc1:ucPage2 runat="server" ID="ucPage2"  PageSize ="2" Url="/SystemAdmin/AccountingList.aspx"/>
+               </div>
+               <%--<uc1:ucPager runat="server" ID="ucPager" PageSize="4"
+                   CurrentPage="1"  TotalSize="10" Url="accounyingList.aspx"--%>/>
 
            <asp:PlaceHolder ID="plcNodata" runat="server" Visible ="false" >
 

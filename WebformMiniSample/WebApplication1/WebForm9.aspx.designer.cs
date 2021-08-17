@@ -7,21 +7,12 @@
 // </自動產生的>
 //------------------------------------------------------------------------------
 
-namespace AccountingNote
+namespace WebApplication1
 {
 
 
-    public partial class Main
+    public partial class WebForm9
     {
-
-        /// <summary>
-        /// head 控制項。
-        /// </summary>
-        /// <remarks>
-        /// 自動產生的欄位。
-        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder head;
 
         /// <summary>
         /// form1 控制項。
@@ -33,12 +24,12 @@ namespace AccountingNote
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
-        /// ContentPlaceHolder1 控制項。
+        /// ucAddControl 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder ContentPlaceHolder1;
+        protected global::WebApplication1.ucAddControl ucAddControl;
     }
 }

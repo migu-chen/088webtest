@@ -34,12 +34,14 @@ namespace AccountingNote.SystemAdmin
             {
                 //int totalPages = this.GetTotalPages(dt);
                 var dtPaged = this.GetPagedDataTable(dt);
+                this.ucPage2.TotalSize = dt.Rows.Count;
+                this.ucPage2.Bind();
 
                 this.gvAccountList.DataSource = dtPaged;
                 this.gvAccountList.DataBind();
 
-                this.ucPager.TotalSize = dt.Rows.Count;//給出總數
-                this.ucPager.Bind();
+                this.ucPage2.TotalSize = dt.Rows.Count;//給出總數
+                this.ucPage2.Bind();
                 
             }
             else
@@ -49,8 +51,6 @@ namespace AccountingNote.SystemAdmin
             }
          
         }
-
-
 
 
         private int GetCurrentPage()
@@ -76,9 +76,9 @@ namespace AccountingNote.SystemAdmin
             DataTable dtPaged = dt.Clone();
             //foreach (DataRow dr in dt.Rows )
             //for(var i=0;i < dt.Rows.Count; i++ )
-
-            int startIndex = (this.GetCurrentPage() - 1) * 10;
-            int endIndex = (this.GetCurrentPage()) * 10;
+            int pageSize = this.ucPage2.PageSize;
+            int startIndex = (this.GetCurrentPage() - 1) * pageSize;
+            int endIndex = (this.GetCurrentPage()) * pageSize;
             if (endIndex > dt.Rows.Count)
                 endIndex = dt.Rows.Count;
             for (var i = startIndex; i < endIndex; i++)
