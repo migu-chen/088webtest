@@ -1,4 +1,5 @@
-﻿using AccountingNote.DBsource;
+﻿using AccountingNote.Auth;
+using AccountingNote.DBsource;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,31 +31,18 @@ namespace AccountingNote
 
             string inp_acct = this.txtaccount.Text;
             string inp_pwd = this.txtPWD.Text;
+           
 
-            if (string.IsNullOrWhiteSpace(inp_pwd) || string.IsNullOrWhiteSpace(inp_acct))
+            string msg;
+            if (!Authmanager.TryLogin(inp_acct, inp_pwd, out msg))
             {
-                this.ItlMsg.Text = "Account/PWD is required.";
+                this.ItlMsg.Text= msg;
                 return;
             }
 
-            var dr = UserInfoManager.GetUserInfoListtest(inp_acct);
-            if (dr == null)
-            {
-                this.ItlMsg .Text = "Account doesn`t exists";
-                    return;
-            }
-
-            if(string .Compare (dr["Account"].ToString()  ,inp_acct ,true) == 0 &&
-                 string .Compare (dr["PWD"].ToString(), inp_pwd ,false) == 0)
-            {
-                this.Session["UserLoginInfo"] = dr["Account"].ToString ();
-                Response.Redirect("/SystemAdmin/UserInfo.aspx");
-            }
-            else
-            {
-                this.ItlMsg.Text = "Login fail,Please check Account /PWD .";
-                return;
-            }
+            Response.Redirect("/SystemAdmin/UserInfo.aspx");
+          
         }
+       
     }
 }

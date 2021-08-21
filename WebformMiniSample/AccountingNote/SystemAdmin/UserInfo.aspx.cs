@@ -1,12 +1,7 @@
-﻿using AccountingNote.DBsource;
-using DBClasses;
+﻿using AccountingNote.Auth;
 using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
+using UserInfoManager = AccountingNote.DBsource.UserInfoManager;
 
 namespace AccountingNote.SystemAdmin
 {
@@ -17,36 +12,32 @@ namespace AccountingNote.SystemAdmin
             if (!this.IsPostBack)
             {
 
-
-                if (this.Session["UserLoginInfo"] == null)
+                if (!Authmanager.IsLogined())
                 {
                     Response.Redirect("/Login.aspx");
                     return;
                 }
 
-                string account = this.Session["UserLoginInfo"] as string;
-                //DataRow dr = UserInfoManager.GetUserInfoByAccount( account );
-                DataRow dr = DBsource.UserInfoManager.GetUserInfoListtest(account);
-                DataRow dr1 = dr;
-
-
-                if (dr1 == null)
+                var currentUser = Authmanager.GetCurrentUser();
+                
+                if (currentUser == null)
                 {
-                    this.Session["UserLoginInfo"] = null;
+                    //this.Session["UserLoginInfo"] = null;
                     Response.Redirect("/Login.aspx");
                     return;
                 }
 
-                this.ItAccount.Text = dr1["Account"].ToString();
-                this.ItEmail.Text = dr1["Email"].ToString();
-                this.Itname.Text = dr1["Name"].ToString();
+                this.ItAccount.Text = currentUser.Account;
+                this.ItEmail.Text = currentUser.Email;
+                this.Itname.Text = currentUser.Name;
             }
         }
 
 
         protected void btnLogout_Click(object sender, EventArgs e)
         {
-            this.Session["UserLoginInfo"] = null;
+            //this.Session["UserLoginInfo"] = null;
+            Authmanager.logout();
             Response.Redirect("/Login.aspx");
         }
     }

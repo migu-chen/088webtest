@@ -1,4 +1,5 @@
-﻿using AccountingNote.DBsource;
+﻿using AccountingNote.Auth;
+using AccountingNote.DBsource;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,17 +14,18 @@ namespace AccountingNote.SystemAdmin
         protected void Page_Load(object sender, EventArgs e)
         {
             // check is logined
-          if (this.Session["UserLoginInfo"] == null)
-          {
+            if (!Authmanager.IsLogined())
+            {
                 Response.Redirect("/login.aspx");
+                return;
           }
             
            string account = this.Session["UserLoginInfo"] as string;
-
-           var drUserInfo = DBsource.UserInfoManager.GetUserInfoListtest(account);
-
-           if (drUserInfo == null)
+            var currentUser = Authmanager.GetCurrentUser();
+           
+           if (currentUser == null)
            {
+                this.Session["UserloginInfo"] = null;
                 Response.Redirect("/login.aspx");
                 return;
            }
@@ -47,8 +49,7 @@ namespace AccountingNote.SystemAdmin
               if(int.TryParse (idText , out id))
               {
                      // var drAccounting = AccountingManager.GetAccounting(id);
-                 var drAccounting = AccountingManager.GetAccounting(id ,drUserInfo
-                     ["ID"].ToString ()) ;
+                 var drAccounting = AccountingManager.GetAccounting(id , currentUser.ID.ToString ()) ;
                
                         
                         
@@ -88,16 +89,15 @@ namespace AccountingNote.SystemAdmin
                 return;
             }
 
-            string account = this.Session["UserLoginInfo"] as string;
-            var dr1 = UserInfoManager.GetUserInfoListtest(account);
-
-            if (dr1 == null)
+            UserInfoModel currentUser = Authmanager.GetCurrentUser();
+                       
+            if (currentUser == null)
             {
                 Response.Redirect("/login.aspx");
                 return;
             }
 
-            string userID = dr1["ID"].ToString();////
+            string userID = currentUser.ID;////
             string actTypetext = this.ddIActType.SelectedValue;
             string amounttext = this.txtAmount.Text;
             string caption = this.txtCaption.Text;
